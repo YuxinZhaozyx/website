@@ -111,6 +111,15 @@ gitment.render('container')
 <script src="https://www.wenjunjiang.win/js/gitment.js"></script>
 ```
 
+或者
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+```
+
+目前来看后者更稳定一点。
+
 {{% /alert %}}
 
 
@@ -213,8 +222,8 @@ $ vi layouts/partials/comments.html
 	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
 	<script src="https://billts.site/js/gitment.js"></script>
 	{{ else }}
-	<link rel="stylesheet" href="https://www.wenjunjiang.win/css/gitment.css">
-	<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
+	<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
 	{{ end }}
 
 	<script>
@@ -260,3 +269,4 @@ $ vi layouts/partials/comments.html
 
 [5]  [[object ProgressEvent] #170](https://github.com/imsun/gitment/issues/170)
 
+[6]  [网站无法访问了？ #102](https://github.com/imsun/gitment/issues/102)
