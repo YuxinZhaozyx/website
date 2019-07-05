@@ -162,3 +162,11 @@ sharing = true
     api_key = ""
     index_name = ""
     show_logo = false
+
+# Config comments of gitment
+[gitment]
+  language = "" # set "" disable comment, "zh" to Chinese, "en" to English
+  owner = "YuxinZhaozyx"
+  repo  = "YuxinZhaozyx.github.io"
+  clientID = "ec5806c0144b70a1b32e"
+  clientSecret = "aadae41a3747ffa5b36fd0e13c7e84026db07e0c"

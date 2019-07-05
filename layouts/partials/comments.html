@@ -1,17 +1,26 @@
+{{ if .Site.Params.gitment.language }}
 <section id="comments">
 	<div id="gitmentContainer"></div>
+	{{ if eq .Site.Params.gitment.language "zh" }}
 	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
 	<script src="https://billts.site/js/gitment.js"></script>
+	{{ else }}
+	<link rel="stylesheet" href="https://www.wenjunjiang.win/css/gitment.css">
+	<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+	{{ end }}
+
 	<script>
 		var gitment = new Gitment({
-			id: '',
-			owner: 'YuxinZhaozyx',
-			repo: 'YuxinZhaozyx.github.io',
+			id: '{{ .Params.Date }}',
+			owner: {{ .Site.Params.gitment.owner }},
+			repo: {{ .Site.Params.gitment.repo }},
 			oauth: {
-				client_id: 'ec5806c0144b70a1b32e',
-				client_secret: 'aadae41a3747ffa5b36fd0e13c7e84026db07e0c',
+				client_id: {{ .Site.Params.gitment.clientID }},
+				client_secret: {{ .Site.Params.gitment.clientSecret }},
 			},
 		});
 		gitment.render('gitmentContainer');
 	</script>
 </section>
+
+{{ end }}
