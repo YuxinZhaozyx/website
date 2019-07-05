@@ -165,7 +165,7 @@ sharing = true
 
 # Config comments of gitment
 [gitment]
-  language = "" # set "" disable comment, "zh" to Chinese, "en" to English
+  language = "en" # set "" disable comment, "zh" to Chinese, "en" to English
   owner = "YuxinZhaozyx"
   repo  = "YuxinZhaozyx.github.io"
   clientID = "ec5806c0144b70a1b32e"
