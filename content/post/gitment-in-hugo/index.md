@@ -74,7 +74,7 @@ Callback URL 填写评论页面对应的域名，如`https://YuxinZhaozyx.github
 
 ### 2. 引入Gitment
 
-将一下代码添加到你的页面：
+将以下代码添加到你的页面：
 
 ```html
 <div id="container"></div>
