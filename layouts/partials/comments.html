@@ -1,26 +1,30 @@
-{{ if .Site.Params.gitment.language }}
+{{ if eq .Site.Params.gitalk.on true }}
 <section id="comments">
-	<div id="gitmentContainer"></div>
-	{{ if eq .Site.Params.gitment.language "zh" }}
-	<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
-	<script src="https://billts.site/js/gitment.js"></script>
-	{{ else }}
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
-	<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
-	{{ end }}
+	<div id="gitalkContainer"></div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 	<script>
-		var gitment = new Gitment({
-			id: '{{ .Params.Date }}',
-			owner: {{ .Site.Params.gitment.owner }},
-			repo: {{ .Site.Params.gitment.repo }},
-			oauth: {
-				client_id: {{ .Site.Params.gitment.clientID }},
-				client_secret: {{ .Site.Params.gitment.clientSecret }},
+		var gitalk = new Gitalk({
+			clientID: {{ .Site.Params.gitalk.clientID }},
+			clientSecret: {{ .Site.Params.gitalk.clientSecret }},
+			repo: {{ .Site.Params.gitalk.repo }},
+			owner: {{ .Site.Params.gitalk.owner }},
+			admin: {{ .Site.Params.gitalk.admin }},
+			id: '{{ .Params.Date }}',      // Ensure uniqueness and length less than 50
+			labels: {{ .Site.Params.gitalk.labels }},
+			distractionFreeMode: {{ .Site.Params.gitalk.distractionFreeMode }},  // Facebook-like distraction free mode
+			pagerDirection: {{ .Site.Params.gitalk.pagerDirection }},
+			createIssueManually: {{ .Site.Params.gitalk.createIssueManually }},
+			enableHotKey: {{ .Site.Params.gitalk.enableHotKey }},
+			flipMoveOptions: {
+				staggerDelayBy: {{ .Site.Params.gitalk.flipMoveOptions.staggerDelayBy }},
+				appearAnimation: {{ .Site.Params.gitalk.flipMoveOptions.appearAnimation }},
+				enterAnimation: {{ .Site.Params.gitalk.flipMoveOptions.enterAnimation }},
+				leaveAnimation: {{ .Site.Params.gitalk.flipMoveOptions.leaveAnimation }},
 			},
 		});
-		gitment.render('gitmentContainer');
+		gitalk.render('gitalkContainer');
 	</script>
 </section>
-
 {{ end }}

@@ -163,10 +163,22 @@ sharing = true
     index_name = ""
     show_logo = false
 
-# Config comments of gitment
-[gitment]
-  language = "en" # set "" disable comment, "zh" to Chinese, "en" to English
-  owner = "YuxinZhaozyx"
-  repo  = "YuxinZhaozyx.github.io"
+# Config comments of gitalk
+[gitalk]
+  on = true
   clientID = "ec5806c0144b70a1b32e"
   clientSecret = "aadae41a3747ffa5b36fd0e13c7e84026db07e0c"
+  repo  = "YuxinZhaozyx.github.io"
+  owner = "YuxinZhaozyx"
+  admin = ["YuxinZhaozyx"]
+  labels = ["Comments"]  # default to ["Gitalk"]
+  distractionFreeMode = false
+  pagerDirection = 'last' # set to 'last' or 'first'
+  createIssueManually = false
+  enableHotKey = true  # cmd | ctrl + enter to commit comment
+  [gitalk.flipMoveOptions]
+    staggerDelayBy = 150
+    appearAnimation = 'elevator'
+    enterAnimation = 'elevator'
+    leaveAnimation = 'elevator'
+  
