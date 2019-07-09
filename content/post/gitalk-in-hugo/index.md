@@ -111,8 +111,9 @@ Callback URL 填写评论页面对应的域名，如`https://YuxinZhaozyx.github
 <style type="text/css">
 	table.tableizer-table {
 		font-size: 12px;
-		border: 1px solid #CCC; 
-		font-family: Arial, Helvetica, sans-serif;
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
 	} 
 </style>
 <table class="tableizer-table">
@@ -121,126 +122,128 @@ Callback URL 填写评论页面对应的域名，如`https://YuxinZhaozyx.github
         <th>参数</th>
         <th>类型</th>
         <th>可选</th>
-        <th>默认值</th>
         <th>说明</th>
+        <th>默认值</th>
     </tr>
 </thead>
 <tbody>
     <tr>
-        <td>`clientID`</td>
+        <td nowrap>`clientID`</td>
         <td>String</td>
         <td>no</td>
-        <td>`null`</td>
         <td>GitHub Application Client ID</td>
+        <td>`null`</td>
     </tr>
     <tr>
-        <td>`clientSecret`</td>
+        <td nowrap>`clientSecret`</td>
         <td>String</td>
         <td>no</td>
-        <td>`null`</td>
         <td>GitHub Application Client Secret</td>
+        <td>`null`</td>
     </tr>
     <tr>
-        <td>`repo`</td>
+        <td nowrap>`repo`</td>
         <td>String</td>
         <td>no</td>
-        <td>`null`</td>
         <td>存放评论的gitHub仓库</td>
-    </tr>
-    <tr>
-        <td>`owner`</td>
-        <td>String</td>
-        <td>no</td>
         <td>`null`</td>
-        <td>存放评论的gitHub仓库的所有者</td>
     </tr>
     <tr>
-        <td>`admin`</td>
+        <td nowrap>`owner`</td>
+        <td>String</td>
+        <td>no</td>
+        <td>存放评论的gitHub仓库的所有者</td>
+        <td>`null`</td>
+    </tr>
+    <tr>
+        <td nowrap>`admin`</td>
         <td>Array</td>
         <td>no</td>
-        <td>`[ owner ]`</td>
         <td>允许初始化评论的用户（repo的所有者和合作者）</td>
+        <td>`[ owner ]`</td>
     </tr>
     <tr>
-        <td>`id`</td>
+        <td nowrap>`id`</td>
         <td>String</td>
         <td>yes</td>
-        <td>`location.href`</td>
         <td>页面的唯一标识，长度必须小于50</td>
+        <td>`location.href`</td>
     </tr>
     <tr>
-        <td>`number`</td>
+        <td nowrap>`number`</td>
         <td>Number</td>
         <td>yes</td>
-        <td>-1</td>
         <td>页面的issueID标识，若未定义number属性则使用id进行定位</td>
+        <td>-1</td>
     </tr>
     <tr>
-        <td>`labels`</td>
+        <td nowrap>`labels`</td>
         <td>Array</td>
         <td>yes</td>
-        <td>`['Gitalk']`</td>
         <td>GitHub issue的标签</td>
+        <td>`['Gitalk']`</td>
     </tr>
     <tr>
-        <td>`title`</td>
+        <td nowrap>`title`</td>
         <td>String</td>
         <td>yes</td>
-        <td>`document.title`</td>
         <td>GitHub issue的标题</td>
+        <td>`document.title`</td>
     </tr>
     <tr>
-        <td>`body`</td>
+        <td nowrap>`body`</td>
         <td>String</td>
         <td>yes</td>
-        <td>`location.href + header.meta[description]`</td>
         <td>GitHub issue的内容</td>
+        <td>`location.href + header.meta[description]`</td>
     </tr>
     <tr>
-        <td>`language`</td>
+        <td nowrap>`language`</td>
         <td>String</td>
         <td>yes</td>
-        <td>`navigator.language || navigator.userLanguage`</td>
         <td>语言，支持[en, zh-CN, zh-TW]</td>
+        <td>`navigator.language || navigator.userLanguage`</td>
     </tr>
     <tr>
-        <td>`perPage`</td>
+        <td nowrap>`perPage`</td>
         <td>Number</td>
         <td>yes</td>
-        <td>10</td>
         <td>每次加载的评论数，最多100</td>
+        <td>10</td>
     </tr>
     <tr>
-        <td>`distractionFreeMode`</td>
+        <td nowrap>`distractionFreeMode`</td>
         <td>Boolean</td>
         <td>yes</td>
-        <td>`false`</td>
         <td>类似Facebook评论框的全屏遮罩效果.</td>
+        <td>`false`</td>
     </tr>
     <tr>
-        <td>`pagerDirection`</td>
+        <td nowrap>`pagerDirection`</td>
         <td>String</td>
         <td>yes</td>
-        <td>`'last'`</td>
         <td>评论排序方式， `last`为按评论创建时间倒叙，`first`为按创建时间正序。</td>
+        <td>`'last'`</td>
     </tr>
     <tr>
-        <td>`createIssueManually`</td>
+        <td nowrap>`createIssueManually`</td>
         <td>Boolean</td>
         <td>yes</td>
+        <td width=50% nowrap>如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。</td>
         <td>`false`</td>
-        <td>如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。</td>
     </tr>
     <tr>
-        <td>`proxy`</td>
+        <td nowrap>`proxy`</td>
         <td>String</td>
         <td>yes</td>
-        <td>https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token</td>
-        <td>GitHub oauth请求到反向代理，为了支持CORS</td></tr>
+        <td>GitHub oauth请求到反向代理，为了支持CORS</td>
+        <td nowrap>https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token</td>
+    </tr>
     <tr>
-        <td>`flipMoveOptions`</td>
+        <td nowrap>`flipMoveOptions`</td>
         <td>Object</td>
         <td>yes</td>
+        <td>评论的参考动画</td>
         <td>
             <code>
             { <br>
@@ -251,16 +254,18 @@ Callback URL 填写评论页面对应的域名，如`https://YuxinZhaozyx.github
             }
             </code>
         </td>
-        <td>评论的参考动画</td>
     </tr>
     <tr>
-        <td>`enableHotKey`</td>
+        <td nowrap>`enableHotKey`</td>
         <td>Boolean</td>
         <td>yes</td>
+        <td>启用快捷键(cmd|ctrl + enter) 提交评论</td>
         <td>`true`</td>
-        <td>启用快捷键(cmd|ctrl + enter) 提交评论</td></tr>
+    </tr>
 </tbody>
 </table>
+
+
 
 ### 初始化评论
 
