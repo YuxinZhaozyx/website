@@ -5,7 +5,7 @@ title: "Hugo博客集成Gitment评论模块"
 subtitle: "Gitment使用踩坑教程"
 summary: "由于国内无法访问Disqus，hugo-academic主题自带的disqus评论功能无法使用，故而寻求其他评论方法，最后找到了gitment，但也踩了很多的坑。"
 authors: ["yuxinzhao"]
-tags: ["hugo", "academic", "gitment", "comments"]
+tags: ["hugo", "academic", "gitment", "comments", "github"]
 categories: ["hugo"]
 date: 2019-07-05T17:20:59+08:00
 lastmod: 2019-07-05T17:20:59+08:00
