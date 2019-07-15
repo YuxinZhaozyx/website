@@ -18,7 +18,7 @@ draft: false
 image:
   caption: "RoI Pooling"
   focal_point: ""
-  preview_only: true
+  preview_only: false
 
 # Projects (optional).
 #   Associate this post with one or more of your projects.
@@ -28,7 +28,7 @@ image:
 projects: []
 ---
 
-![](featured.png)
+
 
 [上文](/post/what-is-roi/)讲了什么是RoI(Region of Interest, 感兴趣区域)，本文讲述RoI Pooling的概念。
 
@@ -63,3 +63,10 @@ RoI Pooling是Pooling(池化)的一种，而且是针对RoI的池化。它的作
    ![](image/max-pooling-sections.png)
 4. **对每个section做max pooling，可以得到:**
    ![](image/roi-pooling-result.png)
+
+## 参考引用
+
+[1] [Region of interest pooling explained](https://deepsense.ai/region-of-interest-pooling-explained/)
+
+[2] [ROI Pooling层解析](https://blog.csdn.net/lanran2/article/details/60143861)
+
