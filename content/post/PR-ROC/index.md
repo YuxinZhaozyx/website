@@ -54,8 +54,8 @@ projects: []
     <tr>
         <th> 0 </td>
         <td> FN </td>
-        <td> FP </td>
-        <td> FN+FP </td>
+        <td> TN </td>
+        <td> FN+TN </td>
     </tr>
     <tr>
         <th colspan="2"> $\sum$ </td>
@@ -64,6 +64,7 @@ projects: []
         <td> TP+TN+FP+FN </td>
     </tr>
 </table>
+
 
 
 
