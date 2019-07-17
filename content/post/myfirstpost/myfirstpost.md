@@ -61,6 +61,13 @@ $ vi -i --help  path/to/file
 vi path/to/another/file
 ```
 
+```console
+$ cd <mydir>
+$ vi -i --help path/to/file
+vi path/to/another/file "hello"
+find | grep "hello"
+```
+
 # world
 
 
