@@ -42,6 +42,25 @@ if a > 0:
 	print(a)
 ```
 
+```go
+import "fmt"
+
+type A struct {
+	Key int `json:"key"`
+	Value int `json:"value"`
+}
+
+func (a A) print() {
+	fmt.Print("[",a.Key,":",a.Value,"]");
+}
+```
+
+```shell
+$ cd <mydir>
+$ vi -i --help  path/to/file
+vi path/to/another/file
+```
+
 # world
 
 
