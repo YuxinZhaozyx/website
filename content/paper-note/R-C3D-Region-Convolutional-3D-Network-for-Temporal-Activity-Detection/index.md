@@ -45,11 +45,7 @@ projects: []
 | ----- | ------------------------------- |
 | R-C3D | Region Convolutional 3D Network |
 | RoI   | Region of Interest              |
-| RPN   | Pegion Proposal Network         |
-|       |                                 |
-|       |                                 |
-|       |                                 |
-|       |                                 |
+| RPN   | Region Proposal Network         |
 
 ## R-C3D 的特点
 
@@ -201,13 +197,13 @@ where $c_i$ and $l_i$ are the center location and the length of anchor segments 
 
 ### Experiments on ActivityNet
 
-+ sample frames at 3fps
++ sample frames at 3 fps
 + input buffer: 768
 + **K=20, with scale values [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48, 56, 64]**
 
 ### Experiments on Charades
 
-+ sample frames at 5fps
++ sample frames at 5 fps
 + input buffer: 768
 + **K=18, with scale values [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48]**
 
