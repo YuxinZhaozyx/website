@@ -42,3 +42,8 @@ slides: ""
 
 This project is to record my learning road of pytorch framework.
 
+## Tutorial
+
++ [官方教程](https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html)
++ [PyTorch中文手册](https://github.com/zergtant/pytorch-handbook)
+
