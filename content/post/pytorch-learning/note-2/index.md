@@ -163,9 +163,61 @@ True
 False
 ```
 
+
+
 {{% alert note %}}
 
 **更多阅读：** autograd 和 Function 的[官方文档](https://pytorch.org/docs/autograd)
 
 {{% /alert %}}
 
+## 拓展Autograd
+
+如果需要自定义autograd扩展新的功能，就需要扩展Function类。因为Function使用autograd来计算结果和梯度，并对操作历史进行编码。 在Function类中最主要的方法就是`forward()`和`backward()`他们分别代表了前向传播和反向传播。
+
+一个自定义的Function需要一下三个方法：
+
+```
+__init__ (optional)：如果这个操作需要额外的参数则需要定义这个Function的构造函数，不需要的话可以忽略。
+
+forward()：执行前向传播的计算代码
+
+backward()：反向传播时梯度计算的代码。 参数的个数和forward返回值的个数一样，每个参数代表传回到此操作的梯度。
+```
+
+```python
+# 引入Function便于扩展
+from torch.autograd.function import Function
+
+# 定义一个乘以常数的操作(输入参数是张量)
+# 方法必须是静态方法，所以要加上@staticmethod 
+class MulConstant(Function):
+    
+    @staticmethod 
+    def forward(ctx, tensor, constant):
+        # ctx 用来保存信息这里类似self，并且ctx的属性可以在backward中调用
+        ctx.constant=constant
+        return tensor *constant
+    
+    @staticmethod
+    def backward(ctx, grad_output):
+        # 返回的参数要与输入的参数一样.
+        # 第一个输入为3x3的张量，第二个为一个常数
+        # 常数的梯度必须是 None.
+        return grad_output, None
+```
+
+定义完我们的新操作后，我们来进行测试
+
+```python
+a=torch.rand(3,3,requires_grad=True)
+b=MulConstant.apply(a,5)
+print("a:"+str(a))
+print("b:"+str(b)) # b为a的元素乘以5
+```
+
+反向传播，返回值不是标量，所以`backward`方法需要参数
+
+```python
+b.backward(torch.ones_like(a))
+```

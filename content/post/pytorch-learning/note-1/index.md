@@ -159,6 +159,34 @@ x.shape:   torch.Size([5, 3])
 
 {{% /alert %}}
 
+## 基础类型
+
+###  基本类型
+
+Tensor的基本数据类型有五种：
+
+- 32位浮点型：torch.FloatTensor。 (默认)
+- 64位整型：torch.LongTensor。
+- 32位整型：torch.IntTensor。
+- 16位整型：torch.ShortTensor。
+- 64位浮点型：torch.DoubleTensor。
+
+除以上数字类型外，还有 byte和chart型
+
+```python
+tensor = torch.tensor([3.1433223])  # tensor([3.1433])
+
+long = tensor.long()  # tensor([3])
+half = tensor.half()  # tensor([3.1426], dtype=torch.float16)
+int_t = tensor.int()  # tensor([3], dtype=torch.int32)
+flo = tensor.float()  # tensor([3.1433])
+short = tensor.short()  # tensor([3], dtype=torch.int16)
+ch = tensor.char()  # tensor([3], dtype=torch.int8)
+bt = tensor.byte()  # tensor([3], dtype=torch.uint8)
+```
+
+
+
 ## Operation 操作
 
 ### 加法
@@ -300,4 +328,31 @@ if torch.cuda.is_available():
 tensor([1.2840], device='cuda:0')
 tensor([1.2840], dtype=torch.float64)
 ````
+
+一般情况下可以使用`.cuda`方法和 `.cpu` 方法将tensor在cpu和gpu之间移动 （需要cuda设备支持）
+
+```python
+cpu_a = torch.rand(4, 3)
+cpu_a.type()  # torch.FloatTensor
+
+gpu_a = cpu_a.cuda()
+gpu_a.type()  # torch.cuda.FloatTensor
+
+cpu_b = gpu_a.cpu()
+cpu_b.type()  # torch.FloatTensor
+```
+
+## 创建变量与结果变量
+
+`.is_leaf`：记录是否是叶子节点。通过这个属性来确定这个变量的类型 在官方文档中所说的“graph leaves”,“leaf variables”，都是指像`x`,`y`这样的手动创建的、而非运算得到的变量，这些变量成为创建变量。 像`z`这样的，是通过计算后得到的结果称为结果变量。
+
+```python
+print("x.is_leaf="+str(x.is_leaf))
+print("z.is_leaf="+str(z.is_leaf))
+```
+
+```python
+x.is_leaf=True
+z.is_leaf=False
+```
 

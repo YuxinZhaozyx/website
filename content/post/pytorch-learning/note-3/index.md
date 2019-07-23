@@ -117,6 +117,26 @@ print(params[0].size())  # params[0] == net.conv1.weight
 torch.Size([6, 1, 5, 5]
 ```
 
+**`net.named_parameters`可同时返回可学习的参数及名称。**
+
+```python
+for name,parameters in net.named_parameters():
+    print(name,':',parameters.size())
+```
+
+```python
+conv1.weight : torch.Size([6, 1, 5, 5])
+conv1.bias : torch.Size([6])
+conv2.weight : torch.Size([16, 6, 5, 5])
+conv2.bias : torch.Size([16])
+fc1.weight : torch.Size([120, 400])
+fc1.bias : torch.Size([120])
+fc2.weight : torch.Size([10, 120])
+fc2.bias : torch.Size([10])
+```
+
+
+
 测试随机输入32×32。 注：这个网络（LeNet）期望的输入大小是32×32，如果使用MNIST数据集来训练这个网络，请把图片大小重新调整到32×32。
 
 ```python
@@ -174,6 +194,48 @@ print(loss)
 ```python
 tensor(1.1509, grad_fn=<MseLossBackward>)
 ```
+
+### 常见损失函数
+
+#### `nn.L1Loss`
+
+$$
+loss(x, y) = 
+\begin{cases}
+\frac1n \sum \left| x_i - y_i \right|, & \text{if reduction='mean'} \\\\\\
+\sum \left| x_i - y_i \right|, & \text{if reduction='sum'}
+\end{cases}
+$$
+
+#### `nn.NLLLoss`
+
+**Negative Log Liklihood(NLL) Loss f 负对数似然损失函数**
+$$
+loss(x, class) = -x_{class}
+$$
+#### `nn.MSELoss`
+
+**Mean Squrare Error(MSE) Loss 均方损失函数**
+$$
+loss(x, y) = \frac1n \sum(x_i - y_i)^2
+$$
+
+#### `nn.CrossEntropyLoss`
+
+多分类用的交叉熵损失函数，LogSoftMax和NLLLoss集成到一个类中，会调用nn.NLLLoss函数,可以理解为CrossEntropyLoss()=log_softmax() + NLLLoss()
+
+
+$$
+loss(x, class) = -\log \frac{\\exp\(x\_{class}\)}{\\sum\_j \\exp(x\_j)} = - x_{class} + \log \left(\sum_j \exp(x_j) \right)
+$$
+
+#### `nn.BCELoss`
+
+Binary Cross Entropy
+$$
+loss(x, t) = -\frac1n \sum_i \left(t_i \*\log(x_i) + (1-t_i)\*\log(1-x_i) \right) 
+$$
+
 
 
 
@@ -233,7 +295,7 @@ criterion = nn.MSELoss()
 optimizer.zero_grad()   # zero the gradient buffers
 output = net(input)
 loss = criterion(output, target)
-loss.backward()
+loss.backward()    # calculate gradients
 optimizer.step()   # Does the update
 ```
 
